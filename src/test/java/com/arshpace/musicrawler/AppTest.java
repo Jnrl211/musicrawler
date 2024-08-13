@@ -40,7 +40,7 @@ public class AppTest
     /**
      * <p>
      * You can customize this test to do web scapping on any other author, 
-     * as long as the artist name matches at least artist name in the remote website's music database.
+     * as long as the artist name matches at least one artist name in the remote website's music database.
      * </p>
      * 
      * <p>

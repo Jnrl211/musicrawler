@@ -46,6 +46,7 @@ import org.openqa.selenium.remote.AbstractDriverOptions;
  */
 public class DataCrawler {
 
+    // TODO: finish cleaning up private methods used by the public methods
     // I based the application on a Firefox WebDriver solely because it is my browser of choice, though it can recreated with any other RemoteWebDriver implementation
     FirefoxDriver driver;
     FirefoxOptions driverOptions;
