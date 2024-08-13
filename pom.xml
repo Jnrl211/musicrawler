@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- The selected Maven archetype for this project was: maven-archetype-quickstart v1.4 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.arshpace</groupId>
+  <artifactId>musicrawler</artifactId>
+  <version>1.0</version>
+  <!-- Custom elements -->
+  <!-- <packaging>jar</packaging> -->
+  <!-- End of custom elements -->
+  <name>Musicrawler (Discography web scraper)</name>
+  <!-- Custom element -->
+  <description>Web scraper project for collecting discography information from music artists, that is publicly available on the web</description>
+  <!-- FIXME change this to the project's website -->
+  <!-- <url>http://www.example.com</url> -->
+
+  <properties>
+    <!-- Disabled default elements -->
+    <!-- Properties "java.version" and "maven.compiler.release" handle both of these properties behaviors, to ensure compiled code compatibility -->
+    <!-- 
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    -->
+    <!-- Custom elements -->
+    <java.version>17</java.version>
+    <!-- This enables the "release" option for cross compilation: the resulting compiled code will be compatible with the specified Java version -->
+    <maven.compiler.release>${java.version}</maven.compiler.release>
+    <!-- By default, Maven processes source files and generates textual output using ISO-8859-1 encoding, this sets the encoding to UTF-8 (more comprehensive) -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <!-- 
+      The default resource delimiter that is used in XML configuration files and property files is "${}"
+      The resource delimiter is used to replace placeholders with resource names defined in the POM file
+      Example:
+      - In the POM file, a custom resource <db.username>theUserName</db.username> is defined,
+      - in a configuration file, "${db.username}" is replaced by "theUserName", unless a custom delimiter is defined,
+      - if a custom delimiter is defined as "@", then the placeholder must be written as @db.username@ to be replaced
+      A Spring project's parent POM sets the resource.delimiter property to "@" without quotes
+      This avoids conflicts with technologies such as JSP and JSTL, which use the delimiter "${}" for different purposes
+    -->
+    <!-- 
+    <resource.delimiter>@</resource.delimiter>
+    <myCustomResource>myCustomResource</myCustomResource>
+    -->
+    <!-- FIXME replace "App" with the proper class name, and change package path names, and package statements in code -->
+    <mainClass.path>${groupId}.${artifactId}.App</mainClass.path> <!-- This custom property specifies the main class, that is executed when the JAR is run -->
+    <selenium.version>4.23.0</selenium.version> <!-- Set to latest 4.x version of Selenium -->
+    <jsoup.version>1.18.1</jsoup.version>
+    <!-- End of custom elements -->
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- Custom elements -->
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>${jsoup.version}</version>
+    </dependency>
+    <!-- End of custom elements -->
+  </dependencies>
+
+  <build>
+    <pluginManagement> <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+          <!-- Custom elements -->
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${mainClass.path}</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+          <!-- End of custom elements -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <!-- Custom elements -->
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${mainClass.path}</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+          <!-- End of custom elements -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+          <!-- Custom elements -->
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${mainClass.path}</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+          <!-- End of custom elements -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+          <!-- Custom elements -->
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${mainClass.path}</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+          <!-- End of custom elements -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+          <!-- Custom elements -->
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${mainClass.path}</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+          <!-- End of custom elements -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+          <!-- Custom elements -->
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${mainClass.path}</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+          <!-- End of custom elements -->
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+          <!-- Custom elements -->
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${mainClass.path}</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+          <!-- End of custom elements -->
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+          <!-- Custom elements -->
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${mainClass.path}</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+          <!-- End of custom elements -->
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <!-- Custom elements -->
+    <!--
+      If finalName is not specified, the resulting artifact name defaults to: ${artifactId}-${version}
+      This causes accumulation of obsolete versions in the target folder, and obstaculizes continuous deployment workflows,
+      Therefore it is set to a constant final name, so older builds are overwritten by the newest version
+    -->
+    <finalName>${artifactId}</finalName>
+    <!-- End of custom elements -->
+  </build>
+</project>
