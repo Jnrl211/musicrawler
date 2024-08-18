@@ -25,7 +25,7 @@ public class AppTest
     /**
      * A test I did to check the response of the JSoup.parse method when given a gibberish argument instead of valid HTML
      */
-    @Test
+    // @Test
     public void jsoupParseFails() {
         Document document;
         // document = Jsoup.parse("Not a valid HTML tree!");
@@ -35,6 +35,14 @@ public class AppTest
         System.out.println("Value of document: " + String.valueOf(document));
         System.out.println("Class of document: " + document.className());
         // Result: JSoup seemingly handles anything, adding boilerplate tags if necessary
+    }
+
+    @Test
+    public void encodingTest() {
+        // Prints a string in UTF-8, and the file encoding system property,
+        // check whether changing the encoding of the terminal solves the wrong encoding issue
+        System.out.println("Hello, World 1! Привет, мир! こんにちは世界");
+        System.out.println("File encoding: " + System.getProperty("file.encoding"));
     }
 
     /**
@@ -57,6 +65,9 @@ public class AppTest
         Artist artist;
         List<Release> releases;
         List<Song> firstAlbumSongs;
+        // Added more artists here to simulate multiple test cases
+        // artistName = "Nirvana";
+        // artistName = "Luis Miguel";
         artist = dataCrawler.getArtist(artistName);
         System.out.println("Artist name: " + artist.getName() + ", channel URL: " + artist.getUrl());
         System.out.println("Artist releases: ");

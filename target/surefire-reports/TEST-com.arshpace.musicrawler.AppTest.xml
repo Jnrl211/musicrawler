@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.arshpace.musicrawler.AppTest" time="22.002" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.arshpace.musicrawler.AppTest" time="18.085" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\icecr\AppData\Local\Temp\surefire5539164116572533149\surefirebooter10901091352207164116.jar C:\Users\icecr\AppData\Local\Temp\surefire5539164116572533149 2024-08-13T12-28-04_874-jvmRun1 surefire13020797708741061756tmp surefire_08519069241279389506tmp"/>
+    <property name="sun.java.command" value="C:\Users\icecr\AppData\Local\Temp\surefire6914176644595481786\surefirebooter-20240818020501046_3.jar C:\Users\icecr\AppData\Local\Temp\surefire6914176644595481786 2024-08-18T02-05-00_912-jvmRun1 surefire-20240818020501046_1tmp surefire_0-20240818020501046_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="c:\Users\icecr\Documents\All\Projects\musicrawler\target\test-classes;c:\Users\icecr\Documents\All\Projects\musicrawler\target\classes;C:\Users\icecr\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\icecr\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-java\4.23.0\selenium-java-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-api\4.23.0\selenium-api-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.23.0\selenium-chrome-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.23.0\selenium-chromium-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-json\4.23.0\selenium-json-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.23.0\selenium-manager-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v125\4.23.0\selenium-devtools-v125-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v126\4.23.0\selenium-devtools-v126-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v127\4.23.0\selenium-devtools-v127-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.23.0\selenium-devtools-v85-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.23.0\selenium-edge-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.23.0\selenium-firefox-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-http\4.23.0\selenium-http-4.23.0.jar;C:\Users\icecr\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.23.0\selenium-ie-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.23.0\selenium-remote-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\com\google\guava\guava\33.2.1-jre\guava-33.2.1-jre.jar;C:\Users\icecr\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\icecr\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\icecr\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\icecr\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\icecr\.m2\repository\com\google\errorprone\error_prone_annotations\2.26.1\error_prone_annotations-2.26.1.jar;C:\Users\icecr\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-api\1.40.0\opentelemetry-api-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-context\1.40.0\opentelemetry-context-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.40.0\opentelemetry-exporter-logging-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.40.0\opentelemetry-sdk-common-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.40.0\opentelemetry-sdk-extension-autoconfigure-spi-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.40.0\opentelemetry-sdk-extension-autoconfigure-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.40.0-alpha\opentelemetry-api-incubator-1.40.0-alpha.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.40.0\opentelemetry-sdk-trace-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.40.0\opentelemetry-sdk-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.40.0\opentelemetry-sdk-metrics-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.40.0\opentelemetry-sdk-logs-1.40.0.jar;C:\Users\icecr\.m2\repository\net\bytebuddy\byte-buddy\1.14.18\byte-buddy-1.14.18.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-os\4.23.0\selenium-os-4.23.0.jar;C:\Users\icecr\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.23.0\selenium-safari-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-support\4.23.0\selenium-support-4.23.0.jar;C:\Users\icecr\.m2\repository\org\jsoup\jsoup\1.18.1\jsoup-1.18.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\icecr\AppData\Local\Temp\surefire5539164116572533149\surefirebooter10901091352207164116.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\icecr\AppData\Local\Temp\surefire6914176644595481786\surefirebooter-20240818020501046_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.1+12-LTS-39"/>
@@ -56,6 +56,249 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="showAllSongsFromFirstAlbumFromArtist" classname="com.arshpace.musicrawler.AppTest" time="21.976"/>
-  <testcase name="jsoupParseFails" classname="com.arshpace.musicrawler.AppTest" time="0"/>
+  <testcase name="showAllSongsFromFirstAlbumFromArtist" classname="com.arshpace.musicrawler.AppTest" time="18.059">
+    <system-out><![CDATA[18 artist name search results
+Item 0 contains artist name: Claude Debussy
+Item 1 contains artist name: Jean-Joël Barbier
+Item 2 contains artist name: Johann Debussy
+Item 3 contains artist name: Erik Satie
+Item 4 contains artist name: Claude Debussy Piano Music Players
+Item 5 contains artist name: Emmanuel Pahud
+Item 6 contains artist name: Pascal Rogé
+Item 7 contains artist name: Dame Moura Lympany
+Item 8 contains artist name: Sviatoslav Richter
+Item 9 contains artist name: Gordon Fergus-Thompson
+Item 10 contains artist name: Angelina Ivanov, Claude Debussy
+Item 11 contains artist name: Véronique Gens
+Item 12 contains artist name: Ólafur Järvinen
+Item 13 contains artist name: Amber Short, Claude Debussy
+Item 14 contains artist name: Quintette à vent Claude Debussy
+Item 15 contains artist name: Lord Vinheteiro
+Item 16 contains artist name: Orchestre de la Suisse Romande
+Item 17 contains artist name: The Cleveland Orchestra
+Artist name: Claude Debussy, channel URL: https://music.youtube.com/channel/UCDBe28OI2PycHdECfoaIWtA
+Artist releases: 
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Chopin: Nocturnes, Debussy: Suite bergamasque, La fille aux cheveux de lin, Pour les arpèges composés (12 Etudes, Book 1, No. 11), at relative URL: https://music.youtube.com/browse/MPREb_1il456JjXRr
+Found a release: Claude Debussy, Jean-Philippe Rameau: Hommage, Piano Works, at relative URL: https://music.youtube.com/browse/MPREb_AbkyCcUT89Y
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Samson François Plays Debussy, at relative URL: https://music.youtube.com/browse/MPREb_6b2E4g78F2u
+Found a release: La rencontre, at relative URL: https://music.youtube.com/browse/MPREb_MC6QgpeM6v6
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: James Adler: Reflections, at relative URL: https://music.youtube.com/browse/MPREb_HQTYreWTLxg
+Found a release: Martha Argerich - Festival, at relative URL: https://music.youtube.com/browse/MPREb_fDTOchDtEUb
+Found a release: Debussy Que J'aime, at relative URL: https://music.youtube.com/browse/MPREb_APrxcaVDwSI
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Martha Argerich Plays Debussy, at relative URL: https://music.youtube.com/browse/MPREb_KDeBPubXztE
+Found a release: Autre Temps, at relative URL: https://music.youtube.com/browse/MPREb_KIyRrOzJVLB
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Concertos pour harpe, at relative URL: https://music.youtube.com/browse/MPREb_xEK72eGtOgu
+Found a release: Debussy: Clair de lune and Other Masterpieces, at relative URL: https://music.youtube.com/browse/MPREb_RubeeOOjzOX
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Bax & Chung Piano Duo: Debussy and Ravel for Two, at relative URL: https://music.youtube.com/browse/MPREb_9dG7byxHydH
+Found a release: Epigraphes. Piano Music by Bach, Debussy & Sibelius, at relative URL: https://music.youtube.com/browse/MPREb_DDXWiwqWP5H
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: John Schneider Plays Debussy, at relative URL: https://music.youtube.com/browse/MPREb_HFlMYzEv3j2
+Found a release: Echo Chambers, at relative URL: https://music.youtube.com/browse/MPREb_PtBYg45DHNE
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Le Cygne. Piano Works by Chopin, Saint-Saëns & Satie, at relative URL: https://music.youtube.com/browse/MPREb_Q6uyv2h6kuI
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Stravinsky: Petrushka; Debussy: Jeux, Prélude, at relative URL: https://music.youtube.com/browse/MPREb_rHxkV4LvpQH
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy, Tournier, Damase, Ravel: Le jardin féerique (French Music for Flute, Bassoon and Harp), at relative URL: https://music.youtube.com/browse/MPREb_8BIP6VWNvSm
+Found a release: Scriabin, Liszt, Ravel, Debussy: Elements Vol. 1- Acqua, at relative URL: https://music.youtube.com/browse/MPREb_aHsHk4W1d8q
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Piano Music by the Moonlight, at relative URL: https://music.youtube.com/browse/MPREb_r9pXFObafRo
+Found a release: Walter Gieseking Plays Ravel & Debussy, at relative URL: https://music.youtube.com/browse/MPREb_m44OUNMUvOj
+Found a release: Claude debussy : piano works (Preludes, Arabesques, Nocturne), at relative URL: https://music.youtube.com/browse/MPREb_N459LFt9ptg
+Found a release: Flûte de Pan et Orgue (Live), at relative URL: https://music.youtube.com/browse/MPREb_BV6Mmz9C6et
+Found a release: Paris 1900 (The Art of the Piano), at relative URL: https://music.youtube.com/browse/MPREb_ZT5s60G7CIx
+Found a release: Debussy: Études & Pour le piano, at relative URL: https://music.youtube.com/browse/MPREb_rSRMzSxBGXc
+Found a release: Debussy, Attahir, Ravel, at relative URL: https://music.youtube.com/browse/MPREb_2pkOp52Zwn4
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: The Spirit Of Melody (A Homage to Bernard Andrès with Music by Andrès, Galliano, Debussy, Bruni), at relative URL: https://music.youtube.com/browse/MPREb_3jicQWh2pkF
+Found a release: Debussy: La mer, Prélude à l'après-midi d'un faune, Nocturnes, Printemps & Fantaisie pour piano et orchestre, at relative URL: https://music.youtube.com/browse/MPREb_SaJBn6k8w3B
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Pianosphere, Vol. 1, at relative URL: https://music.youtube.com/browse/MPREb_0PX40mh0kk8
+Found a release: Made in Paris, at relative URL: https://music.youtube.com/browse/MPREb_mGIxQ2wK3XL
+Found a release: Alhajas (Piano Inspirations From al-Andalus), at relative URL: https://music.youtube.com/browse/MPREb_X4Ph0mgQPhA
+Found a release: Debussy: Ballade, Suite bergamasque, Rêverie, Pour le piano, Danse & Arabesques, at relative URL: https://music.youtube.com/browse/MPREb_wHa4HEhU6PM
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: 109 ans de piano, at relative URL: https://music.youtube.com/browse/MPREb_rUJwzBg12bo
+Found a release: Souvenirs, at relative URL: https://music.youtube.com/browse/MPREb_pmb5xxuZepm
+Found a release: Childhood Tales, at relative URL: https://music.youtube.com/browse/MPREb_zk45LmBB2TG
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy, at relative URL: https://music.youtube.com/browse/MPREb_bxur6UeqWMO
+Found a release: Pop Meets Classical (Vol. 1), at relative URL: https://music.youtube.com/browse/MPREb_iyTdxNJkiBR
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Petite suite, En blanc et noir, Lindaraja, Épigraphes antiques, Symphonie & Marche écossaise, at relative URL: https://music.youtube.com/browse/MPREb_Wck0Upc6AyC
+Found a release: La música i els nens - Music and children, at relative URL: https://music.youtube.com/browse/MPREb_vLuXzCEFyQd
+Found a release: Debussy: La plus que lente, Études & Fantaisie pour piano et orchestre, at relative URL: https://music.youtube.com/browse/MPREb_jkUaHv8Xhs9
+Found a release: Franck & Debussy: Sonates pour violon et piano - Franck: Andantino quietoso & Duo sur des motifs de Gulistan, at relative URL: https://music.youtube.com/browse/MPREb_1sGXRCnejCw
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy, Ravel & Roussel: Quatuors à cordes, at relative URL: https://music.youtube.com/browse/MPREb_lne77PDq9J4
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Préludes, Berceuse héroïque & Estampes, at relative URL: https://music.youtube.com/browse/MPREb_epq2dPLOhUb
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Suite bergamasque, Arabesques, Pour le piano & Rêverie, at relative URL: https://music.youtube.com/browse/MPREb_q8FyVSqgvAP
+Found a release: Debussy Works, at relative URL: https://music.youtube.com/browse/MPREb_ao9nLCTD863
+Found a release: Debussy: Images, Children's Corner, Masques & L'isle joyeuse, at relative URL: https://music.youtube.com/browse/MPREb_zwDcd3c9MuJ
+Found a release: Debussy: La Mer & Première Suite d'Orchestre (Live, Remastered), at relative URL: https://music.youtube.com/browse/MPREb_iptdu0ZgwTR
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Images (Première Série, Deuxième Série, Images inédites), Estampes, Nocturne, at relative URL: https://music.youtube.com/browse/MPREb_9ZBQ9Cki738
+Found a release: Amanda Lee Falkenberg: The Moons Symphony, at relative URL: https://music.youtube.com/browse/MPREb_bFY3FQdovyy
+Found a release: Debussy: Early and Late Piano Pieces, at relative URL: https://music.youtube.com/browse/MPREb_DYaRXtEpmKI
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy, Dukas, Roussel, at relative URL: https://music.youtube.com/browse/MPREb_zCLVwsAq7rM
+Found a release: Chopin, Debussy & Ravel, at relative URL: https://music.youtube.com/browse/MPREb_zkGpjDF0Hqh
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy in Resonance, at relative URL: https://music.youtube.com/browse/MPREb_IDlvcpDJpM9
+Found a release: Debussy: Préludes, Pour le piano, L'Isle joyeuse, Images, Suite bergamasque & Arabesques, at relative URL: https://music.youtube.com/browse/MPREb_KBPMVqc2cNe
+Found a release: Debussy: Préludes, Estampes & Reflets dans l'eau, at relative URL: https://music.youtube.com/browse/MPREb_JvVpgvsra12
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: String Quartet, at relative URL: https://music.youtube.com/browse/MPREb_yj0Bo73DMmO
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Suite Bergamasque, at relative URL: https://music.youtube.com/browse/MPREb_aBJpmnp2Ign
+Found a release: Britten: Four Sea Interludes & Passacaglia; Young Person's Guide to the Orchestra, at relative URL: https://music.youtube.com/browse/MPREb_dRfYrpWVDNC
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Heitor Villa-Lobos, Claude Debussy, Joaquin Turina, Guilherme Bernstein: French Connection (20th Century Violin Sonatas), at relative URL: https://music.youtube.com/browse/MPREb_D2KNjFCF6Zz
+Found a release: Britten: Les Illuminations - Debussy: Ariettes oubliées & Clair de Lune, at relative URL: https://music.youtube.com/browse/MPREb_CXGhMR0mM1R
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Récital Salle Cortot, at relative URL: https://music.youtube.com/browse/MPREb_TWeRcfBahgw
+Found a release: Debussy: Préludes, Book 1: X. La Cathédrale Engloutie, at relative URL: https://music.youtube.com/browse/MPREb_xA81jAuWiSi
+Found a release: Couperin: La reine des cœurs, at relative URL: https://music.youtube.com/browse/MPREb_TbVbWHAADrA
+Found a release: Debussy: Suite bergamasque: III. Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_rSWqs0WCq0E
+Found a release: Debussy: Suite bergamasque: I. Prélude, at relative URL: https://music.youtube.com/browse/MPREb_bn29FrzHbq7
+Found a release: Images, at relative URL: https://music.youtube.com/browse/MPREb_9CQeGyonVXX
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Rêverie, at relative URL: https://music.youtube.com/browse/MPREb_G2a1BHHkZKh
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Préludes, Book 2, CD 131: XII. Feux d'artifice (Musical Moments), at relative URL: https://music.youtube.com/browse/MPREb_futsWrGAm9a
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Préludes, Book 1, L. 117, CD 125: No. 8, La fille aux cheveux de lin, at relative URL: https://music.youtube.com/browse/MPREb_Q0zVU5ptpp6
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: 5 Poèmes de Charles Baudelaire, CD 70, L. 64: No. 3, Le Jet d'Eau (Arr. for Piano by Andreas J. Winkler), at relative URL: https://music.youtube.com/browse/MPREb_IE5aRrUThGZ
+Found a release: Préludes, Book 1, L. 117, CD 125: No. 3, Le vent dans la plaine, at relative URL: https://music.youtube.com/browse/MPREb_Zq7p2onFKYI
+Found a release: Debussy: Suite Bergamasque, L. 75: III. Clair de Lune (Arr. for Violin and Harp by Paola Baron), at relative URL: https://music.youtube.com/browse/MPREb_YBUzvIoRyLA
+Found a release: Préludes, Book 1, L. 117, CD 125: No. 5, Les collines d'Anacapri, at relative URL: https://music.youtube.com/browse/MPREb_K7MKXQcPRzG
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Suite Bergamasque, L. 75, CD 82: No. 3, Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_P2wCrzRDlyr
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Prélude à l'après-midi d'un faune, L. 86 (Arr. for Four Hands by Maurice Ravel), at relative URL: https://music.youtube.com/browse/MPREb_fL9LxreqTvE
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Clair de Lune, at relative URL: https://music.youtube.com/browse/MPREb_T8Po05UAW4s
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: La plus que lente, L. 121 (Arr. for Four Hands by Léon Roques), at relative URL: https://music.youtube.com/browse/MPREb_Sx8TYiJ2lrg
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Suite bergamasque, L. 75: III. Clair de lune (Arr. for Four Hands by Henri Dutilleux), at relative URL: https://music.youtube.com/browse/MPREb_FwcYQ3vHtkG
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_x0ppWO01RKH
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Clair de Lune, at relative URL: https://music.youtube.com/browse/MPREb_WlVCIHhhHTr
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Suite Bergamasque, L.75: No. 3, Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_46ouqsgo4sY
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Préludes, Book 1, CD 125: VIII. La fille aux cheveux de lin (Arr. Hartmann for Violin and Piano) (Musical Moments), at relative URL: https://music.youtube.com/browse/MPREb_MAsZSuJ17lK
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Doctor Gradus Ad Parnassum, at relative URL: https://music.youtube.com/browse/MPREb_iY0icIH2Kxm
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Rêverie, CD 76 (Transcr. Ottensamer for Clarinet and Piano) (Musical Moments), at relative URL: https://music.youtube.com/browse/MPREb_7CJMsZAndk1
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy La plus que lente, valse, at relative URL: https://music.youtube.com/browse/MPREb_olZkQvOV4f6
+Found a release: 2 Arabesques, L. 66: No. 1 in E Major, at relative URL: https://music.youtube.com/browse/MPREb_QkQhFswxwmV
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Suite Bergamasque, L. 75 "Moonlight", at relative URL: https://music.youtube.com/browse/MPREb_UFI9ShYMN4i
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Rêverie, L. 68, at relative URL: https://music.youtube.com/browse/MPREb_F09gGw7gnJj
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Clair de Lune, L. 32, at relative URL: https://music.youtube.com/browse/MPREb_rHOgvbEW0Su
+Found a release: Clair de lune, L. 113, at relative URL: https://music.youtube.com/browse/MPREb_ARVXJyxwn4F
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Arabesque No.1, in E Major, L 66, at relative URL: https://music.youtube.com/browse/MPREb_v6a8NFvub4J
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Reflets dans l'eau, at relative URL: https://music.youtube.com/browse/MPREb_G0IAuaUU1Hn
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_FdEh2154iZu
+Found a release: Sarabande n°3, at relative URL: https://music.youtube.com/browse/MPREb_OFs1fPdWc6T
+Found a release: L'Isle joyeuse, L. 106, at relative URL: https://music.youtube.com/browse/MPREb_ilDOt8kVm9s
+Found a release: Masques, L. 105, at relative URL: https://music.youtube.com/browse/MPREb_prSknDBhv8T
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: La plus que lente, L. 121, at relative URL: https://music.youtube.com/browse/MPREb_AmteOZJwqzp
+Found a release: Valse romantique, L. 71, at relative URL: https://music.youtube.com/browse/MPREb_PmyPUvxjOgS
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Debussy: Suite bergamasque, L. 75: III. Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_IKuLbmuCHGS
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release: Suite bergamasque, L. 75: No. 3, Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_acIBzuwSq6P
+Found a release, but method did not request finding instances of this type. Will ignore
+Total: 100 releases
+First album tracklist: 
+List items found by JSoup: 12
+Found an item: Nocturne in B-Flat Minor, Op. 9, No. 1, at relative URL: watch?v=-Ewczb6AEfY&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Nocturne in F-Sharp Major, Op. 15, No. 2, at relative URL: watch?v=0N9In49ZvUw&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Nocturne in C-Sharp Minor, Op. 27, No. 1, at relative URL: watch?v=BsJx5dd08Ks&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Nocturne in D- Flat Major, Op. 27, No. 2, at relative URL: watch?v=Hnxlm2P4T7k&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Nocturne in B Major, Op. 62, No. 1, at relative URL: watch?v=EhY4qD-BJzQ&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Nocturne in E Major, Op. 62, No. 2, at relative URL: watch?v=aXSAnjuYg2w&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Suite bergamasque: I. Prélude, at relative URL: watch?v=0z9ioo7T_MU&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Suite bergamasque: II. Menuet, at relative URL: watch?v=eB9rVkpec0M&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Suite bergamasque: III. Clair de lune, at relative URL: watch?v=5I27zSHZujs&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Suite bergamasque: IV. Passepied, at relative URL: watch?v=AJHmUyrn5A8&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: The Girl with the Flaxen Hair (No. 8 from Preludes, Book 1), at relative URL: watch?v=a80CUe123bs&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Found an item: Pour les arpèges composés (No. 11 from 12 Etudes), at relative URL: watch?v=KK4AerWNgwI&list=OLAK5uy_nvRmVIREtVDcev6OFucA0syh3WxlMpM5Y
+Total: 12 songs
+]]></system-out>
+  </testcase>
+  <testcase name="encodingTest" classname="com.arshpace.musicrawler.AppTest" time="0.001">
+    <system-out><![CDATA[Hello, World 1! Привет, мир! こんにちは世界
+File encoding: Cp1252
+]]></system-out>
+  </testcase>
 </testsuite>

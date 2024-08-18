@@ -12,5 +12,14 @@ public class App
     {
         System.out.println("Musicrawler");
         System.out.println(System.lineSeparator());
+
+        // Print a UTF-8 string
+        // System.out.println("Hello, World 1! Привет, мир! こんにちは世界");
+        // System.out.println("File encoding: " + System.getProperty("file.encoding"));
+
+        // Save this for later:
+        // On PowerShell: [Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
+        // On CMD: CHCP 65001
+
     }
 }
