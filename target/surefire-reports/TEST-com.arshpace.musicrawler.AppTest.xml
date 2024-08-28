@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.arshpace.musicrawler.AppTest" time="18.085" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.arshpace.musicrawler.AppTest" time="19.512" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\icecr\AppData\Local\Temp\surefire6914176644595481786\surefirebooter-20240818020501046_3.jar C:\Users\icecr\AppData\Local\Temp\surefire6914176644595481786 2024-08-18T02-05-00_912-jvmRun1 surefire-20240818020501046_1tmp surefire_0-20240818020501046_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\icecr\AppData\Local\Temp\surefire18289487208827038200\surefirebooter-20240828135008967_3.jar C:\Users\icecr\AppData\Local\Temp\surefire18289487208827038200 2024-08-28T13-50-08_820-jvmRun1 surefire-20240828135008967_1tmp surefire_0-20240828135008967_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="c:\Users\icecr\Documents\All\Projects\musicrawler\target\test-classes;c:\Users\icecr\Documents\All\Projects\musicrawler\target\classes;C:\Users\icecr\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\icecr\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-java\4.23.0\selenium-java-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-api\4.23.0\selenium-api-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.23.0\selenium-chrome-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.23.0\selenium-chromium-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-json\4.23.0\selenium-json-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.23.0\selenium-manager-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v125\4.23.0\selenium-devtools-v125-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v126\4.23.0\selenium-devtools-v126-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v127\4.23.0\selenium-devtools-v127-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.23.0\selenium-devtools-v85-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.23.0\selenium-edge-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.23.0\selenium-firefox-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-http\4.23.0\selenium-http-4.23.0.jar;C:\Users\icecr\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.23.0\selenium-ie-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.23.0\selenium-remote-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\com\google\guava\guava\33.2.1-jre\guava-33.2.1-jre.jar;C:\Users\icecr\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\icecr\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\icecr\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\icecr\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\icecr\.m2\repository\com\google\errorprone\error_prone_annotations\2.26.1\error_prone_annotations-2.26.1.jar;C:\Users\icecr\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-api\1.40.0\opentelemetry-api-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-context\1.40.0\opentelemetry-context-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.40.0\opentelemetry-exporter-logging-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.40.0\opentelemetry-sdk-common-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.40.0\opentelemetry-sdk-extension-autoconfigure-spi-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.40.0\opentelemetry-sdk-extension-autoconfigure-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.40.0-alpha\opentelemetry-api-incubator-1.40.0-alpha.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.40.0\opentelemetry-sdk-trace-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.40.0\opentelemetry-sdk-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.40.0\opentelemetry-sdk-metrics-1.40.0.jar;C:\Users\icecr\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.40.0\opentelemetry-sdk-logs-1.40.0.jar;C:\Users\icecr\.m2\repository\net\bytebuddy\byte-buddy\1.14.18\byte-buddy-1.14.18.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-os\4.23.0\selenium-os-4.23.0.jar;C:\Users\icecr\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.23.0\selenium-safari-driver-4.23.0.jar;C:\Users\icecr\.m2\repository\org\seleniumhq\selenium\selenium-support\4.23.0\selenium-support-4.23.0.jar;C:\Users\icecr\.m2\repository\org\jsoup\jsoup\1.18.1\jsoup-1.18.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\icecr\AppData\Local\Temp\surefire6914176644595481786\surefirebooter-20240818020501046_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\icecr\AppData\Local\Temp\surefire18289487208827038200\surefirebooter-20240828135008967_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.1+12-LTS-39"/>
@@ -49,35 +49,38 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-17.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;C:\Program Files\Mercury;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Java\jdk-17.0.1\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Users\icecr\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\icecr\AppData\Local\Programs\Python\Python312\;C:\Users\icecr\AppData\Local\Programs\Python\Launcher\;C:\Users\icecr\AppData\Local\Microsoft\WindowsApps;;C:\Users\icecr\AppData\Local\Programs\Microsoft VS Code\bin;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-17.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Lua\5.1;C:\Program Files (x86)\Lua\5.1\clibs;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Java\jdk-17.0.1\bin;C:\Program Files\Docker\Docker\resources\bin;;;C:\Program Files\Mercury;C:\Users\icecr\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\icecr\AppData\Local\Programs\Python\Python312\;C:\Users\icecr\AppData\Local\Programs\Python\Launcher\;C:\Users\icecr\AppData\Local\Microsoft\WindowsApps;;C:\Users\icecr\AppData\Local\Programs\Microsoft VS Code\bin;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="17.0.1+12-LTS-39"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="showAllSongsFromFirstAlbumFromArtist" classname="com.arshpace.musicrawler.AppTest" time="18.059">
+  <testcase name="showAllSongsFromFirstAlbumFromArtist" classname="com.arshpace.musicrawler.AppTest" time="19.481">
     <system-out><![CDATA[18 artist name search results
 Item 0 contains artist name: Claude Debussy
 Item 1 contains artist name: Jean-Joël Barbier
 Item 2 contains artist name: Johann Debussy
 Item 3 contains artist name: Erik Satie
-Item 4 contains artist name: Claude Debussy Piano Music Players
-Item 5 contains artist name: Emmanuel Pahud
-Item 6 contains artist name: Pascal Rogé
-Item 7 contains artist name: Dame Moura Lympany
+Item 4 contains artist name: Claude Debussy
+Item 5 contains artist name: Claude Debussy Piano Music Players
+Item 6 contains artist name: Emmanuel Pahud
+Item 7 contains artist name: Pascal Rogé
 Item 8 contains artist name: Sviatoslav Richter
 Item 9 contains artist name: Gordon Fergus-Thompson
-Item 10 contains artist name: Angelina Ivanov, Claude Debussy
-Item 11 contains artist name: Véronique Gens
+Item 10 contains artist name: Dame Moura Lympany
+Item 11 contains artist name: Angelina Ivanov, Claude Debussy
 Item 12 contains artist name: Ólafur Järvinen
-Item 13 contains artist name: Amber Short, Claude Debussy
-Item 14 contains artist name: Quintette à vent Claude Debussy
-Item 15 contains artist name: Lord Vinheteiro
-Item 16 contains artist name: Orchestre de la Suisse Romande
-Item 17 contains artist name: The Cleveland Orchestra
+Item 13 contains artist name: Quintette à vent Claude Debussy
+Item 14 contains artist name: Orchestre de la Suisse Romande
+Item 15 contains artist name: Pierre-Yves Hodique
+Item 16 contains artist name: The Cleveland Orchestra
+Item 17 contains artist name: Lord Vinheteiro
 Artist name: Claude Debussy, channel URL: https://music.youtube.com/channel/UCDBe28OI2PycHdECfoaIWtA
 Artist releases: 
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
+Found a release, but method did not request finding instances of this type. Will ignore
 Found a release, but method did not request finding instances of this type. Will ignore
 Found a release, but method did not request finding instances of this type. Will ignore
 Found a release, but method did not request finding instances of this type. Will ignore
@@ -175,9 +178,9 @@ Found a release: Suite Bergamasque, at relative URL: https://music.youtube.com/b
 Found a release: Britten: Four Sea Interludes & Passacaglia; Young Person's Guide to the Orchestra, at relative URL: https://music.youtube.com/browse/MPREb_dRfYrpWVDNC
 Found a release, but method did not request finding instances of this type. Will ignore
 Found a release: Heitor Villa-Lobos, Claude Debussy, Joaquin Turina, Guilherme Bernstein: French Connection (20th Century Violin Sonatas), at relative URL: https://music.youtube.com/browse/MPREb_D2KNjFCF6Zz
-Found a release: Britten: Les Illuminations - Debussy: Ariettes oubliées & Clair de Lune, at relative URL: https://music.youtube.com/browse/MPREb_CXGhMR0mM1R
-Found a release, but method did not request finding instances of this type. Will ignore
-Found a release: Récital Salle Cortot, at relative URL: https://music.youtube.com/browse/MPREb_TWeRcfBahgw
+Found a release: Debussy: Préludes, Book 1: V. Les Collines D'Anacapri, at relative URL: https://music.youtube.com/browse/MPREb_oK0GkD0mH8C
+Found a release: Debussy: Images, L.111: No. 3, Poissons d'or, at relative URL: https://music.youtube.com/browse/MPREb_DUUqDSORo9b
+Found a release: Bach: Concerto in D Minor, BWV 974: II. Adagio, at relative URL: https://music.youtube.com/browse/MPREb_KXiQVB1pGTq
 Found a release: Debussy: Préludes, Book 1: X. La Cathédrale Engloutie, at relative URL: https://music.youtube.com/browse/MPREb_xA81jAuWiSi
 Found a release: Couperin: La reine des cœurs, at relative URL: https://music.youtube.com/browse/MPREb_TbVbWHAADrA
 Found a release: Debussy: Suite bergamasque: III. Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_rSWqs0WCq0E
@@ -275,9 +278,6 @@ Found a release, but method did not request finding instances of this type. Will
 Found a release, but method did not request finding instances of this type. Will ignore
 Found a release: Debussy: Suite bergamasque, L. 75: III. Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_IKuLbmuCHGS
 Found a release, but method did not request finding instances of this type. Will ignore
-Found a release, but method did not request finding instances of this type. Will ignore
-Found a release: Suite bergamasque, L. 75: No. 3, Clair de lune, at relative URL: https://music.youtube.com/browse/MPREb_acIBzuwSq6P
-Found a release, but method did not request finding instances of this type. Will ignore
 Total: 100 releases
 First album tracklist: 
 List items found by JSoup: 12
@@ -296,7 +296,7 @@ Found an item: Pour les arpèges composés (No. 11 from 12 Etudes), at relative 
 Total: 12 songs
 ]]></system-out>
   </testcase>
-  <testcase name="encodingTest" classname="com.arshpace.musicrawler.AppTest" time="0.001">
+  <testcase name="encodingTest" classname="com.arshpace.musicrawler.AppTest" time="0.0">
     <system-out><![CDATA[Hello, World 1! Привет, мир! こんにちは世界
 File encoding: Cp1252
 ]]></system-out>

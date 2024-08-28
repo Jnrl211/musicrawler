@@ -42,7 +42,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class DataCrawler {
 
     // TODO: finish cleaning up private methods used by the public methods
-    // TODO: JSoupRetryManagerFactory static class
     // I based the application on a Firefox WebDriver solely because it is my browser of choice, though it can recreated with any other RemoteWebDriver implementation
     FirefoxDriver driver;
     FirefoxOptions driverOptions;
@@ -67,15 +66,13 @@ public class DataCrawler {
 
     List<Song> getSongs(Release release) {
         List<Song> songs = new ArrayList<>();
-        int jSoupParseAttempts = 5;
-        int jSoupRetryMillis = 1000;
         driver = new FirefoxDriver(driverOptions);
         driver.get(release.getUrl());
         this.waitForKeyElementFoundAndDisplayed(driver, By.tagName("ytmusic-shelf-renderer"));
         // System.out.println("Found " + driver.findElements(By.tagName("ytmusic-shelf-renderer")).size() + " key elements after explicit Wait");
         // JSoup
         boolean isRetry = false;
-        int attempts = jSoupParseAttempts;
+        int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
         do {
             Document document;
             Elements listItems;
@@ -100,7 +97,7 @@ public class DataCrawler {
                 songs.add(song);
                 // System.out.println("Song added successfully");
             }
-            isRetry = isRetryJSoupDocumentLookup(listItems, jSoupRetryMillis);
+            isRetry = JSoupRetryManager.isEmptyListRetry(listItems);
             if (isRetry) {
                 attempts--;
                 System.out.println("JSoup failed to find list items. Retrying... ");
@@ -111,20 +108,6 @@ public class DataCrawler {
         // End of JSoup
         driver.quit();
         return songs;
-    }
-
-    private boolean isRetryJSoupDocumentLookup(Elements list, int retryDelayMillis) {
-        boolean isRetry = false;
-        if (!(list.size() > 0)) {
-            isRetry = true;
-            try {
-                Thread.sleep(retryDelayMillis);
-            } catch (InterruptedException e) {
-                System.out.println("Failed to sleep on JSoup document lookup retry");
-                e.printStackTrace();
-            }
-        }
-        return isRetry;
     }
 
     private void waitForKeyElementFoundAndDisplayed(WebDriver driver, By keyElementSelector) {
@@ -157,15 +140,13 @@ public class DataCrawler {
     // this is because the initial request only loads up to 100 items (100 releases).
     List<Release> getReleases(Artist artist) {
         List<Release> releases = new ArrayList<>();
-        int jSoupParseAttempts = 5;
-        int jSoupRetryMillis = 1000;
         driver = new FirefoxDriver(driverOptions);
         driver.get(artist.getUrl());
         this.waitForKeyElementFoundAndDisplayed(driver, By.tagName("ytmusic-carousel-shelf-renderer"));
         // System.out.println("Found " + driver.findElements(By.tagName("ytmusic-carousel-shelf-renderer")).size() + " key elements after explicit Wait");
         // JSoup
         boolean isRetry = false;
-        int attempts = jSoupParseAttempts;
+        int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
         do {
             Document document;
             Elements listGroups;
@@ -175,7 +156,7 @@ public class DataCrawler {
             document = Jsoup.parse(driver.getPageSource());
             listGroups = document.select("ytmusic-carousel-shelf-renderer");
             // System.out.println("Found " + listGroups.size() + " list groups, a.k.a. shelves");
-            isRetry = isRetryJSoupDocumentLookup(listGroups, jSoupRetryMillis);
+            isRetry = JSoupRetryManager.isEmptyListRetry(listGroups);
             if (isRetry) {
                 attempts--;
                 System.out.println("JSoup failed to find list groups. Retrying... ");
@@ -209,6 +190,39 @@ public class DataCrawler {
     }
 
     Artist getArtist(String artistName) throws Exception {
+
+        // This local class is meant to consolidate artist search result data in a single instance to iterate over them more easily
+        class ArtistSearchResult {
+
+            private String name;
+            private String url;
+
+            ArtistSearchResult() {
+            }
+
+            ArtistSearchResult(String name, String url) {
+                this.setName(name);
+                this.setUrl(url);
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+            
+        }
+
         // Avoid mixing implicit and explicit waiting strategies, using only implicit strategies doesn't work, so I will build this method with explicit waits only
         Artist result = null;
         String encodedArtistName;
@@ -276,40 +290,8 @@ public class DataCrawler {
             //     && shelfRenderer.size() == 1
             //     ;
         });
-        // This local class is meant to consolidate artist search result data in single objects to iterate over them more easily
-        class ArtistSearchResult {
-
-            private String name;
-            private String url;
-
-            ArtistSearchResult() {
-            }
-
-            ArtistSearchResult(String name, String url) {
-                this.setName(name);
-                this.setUrl(url);
-            }
-
-            public String getName() {
-                return name;
-            }
-
-            public void setName(String name) {
-                this.name = name;
-            }
-
-            public String getUrl() {
-                return url;
-            }
-
-            public void setUrl(String url) {
-                this.url = url;
-            }
-            
-        }
-        // TODO: replace hard-coded values
         boolean isRetry;
-        int attempts = 5;
+        int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
         do {
             String pageSource;
             Document document;
@@ -400,22 +382,17 @@ public class DataCrawler {
                 List<WebElement> grid = d.findElements(By.tagName("ytmusic-grid-renderer"));
                 return grid.size() > 0;
             });
-            // TODO: replaced hard-coded values, and possibly create a generic "do loop" private method
-            int attempts = 5;
-            int millisDelay = 1000;
+            // TODO: cleanup, push variables to the top
+            boolean isRetry = false;
+            int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
             Elements nestedReleaseListItems;
             do {
                 Document document = Jsoup.parse(driver.getPageSource());
                 nestedReleaseListItems = document.select("ytmusic-grid-renderer div#items ytmusic-two-row-item-renderer");
-                // Fails to find the list (and its items)
-                if (!(nestedReleaseListItems.size() > 0)) {
+                isRetry = JSoupRetryManager.isEmptyListRetry(nestedReleaseListItems);
+                if (isRetry) {
                     attempts--;
-                    try {
-                        Thread.sleep(millisDelay);
-                    } catch (InterruptedException e) {
-                        // TODO: Auto-generated catch block
-                        e.printStackTrace();
-                    }
+                    System.out.println("JSoup failed to find list items. Retrying... ");
                     continue;
                 }
                 releases.addAll(this.extractReleaseList(nestedReleaseListItems, "div.details div.title-group yt-formatted-string a.yt-simple-endpoint", true, releaseType, artist));
@@ -474,7 +451,7 @@ public class DataCrawler {
             release.setName(releaseTitle.text());
             // The "href" attribute contains a "shortcut" relative URL pointing to the tracklist, not the final relative URL
             release.setUrl(baseUrl.resolve(releaseTitle.attr("href")).toString());
-            // Tracklists have to be scraped too, but this method will only collects Releases, not their tracklists
+            // Tracklists have to be scraped too, but this method will only collect Releases, not their tracklists
             releases.add(release);
             System.out.println("Found a release: " + release.getName() + ", at relative URL: " + release.getUrl());
         }

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.arshpace.musicrawler.AppTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.08 s -- in com.arshpace.musicrawler.AppTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.51 s -- in com.arshpace.musicrawler.AppTest

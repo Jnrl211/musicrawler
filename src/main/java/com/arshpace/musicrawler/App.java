@@ -1,10 +1,6 @@
 package com.arshpace.musicrawler;
 
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.openqa.selenium.WebDriver;
 
 public class App 
 {
