@@ -41,15 +41,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class DataCrawler {
 
-    // TODO: finish cleaning up private methods used by the public methods
     // I based the application on a Firefox WebDriver solely because it is my browser of choice, though it can recreated with any other RemoteWebDriver implementation
     FirefoxDriver driver;
     FirefoxOptions driverOptions;
     FirefoxProfile driverProfile;
-
     String baseUrlAsString = "https://music.youtube.com/";
     URI baseUrl;
-
     Duration explicitWaitTimeout = Duration.ofMillis(10000);
 
     DataCrawler() throws URISyntaxException {
@@ -69,8 +66,6 @@ public class DataCrawler {
         driver = new FirefoxDriver(driverOptions);
         driver.get(release.getUrl());
         this.waitForKeyElementFoundAndDisplayed(By.tagName("ytmusic-shelf-renderer"));
-        // System.out.println("Found " + driver.findElements(By.tagName("ytmusic-shelf-renderer")).size() + " key elements after explicit Wait");
-        // JSoup
         boolean isRetry = false;
         int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
         do {
@@ -95,7 +90,6 @@ public class DataCrawler {
                 song.setName(listItem.text());
                 song.setUrl(baseUrl.resolve(listItem.attr("href")).toString());
                 songs.add(song);
-                // System.out.println("Song added successfully");
             }
             isRetry = JSoupRetryManager.isEmptyListRetry(listItems);
             if (isRetry) {
@@ -105,51 +99,21 @@ public class DataCrawler {
             }
         } while (isRetry && attempts <= 0);
         System.out.println("Total: " + songs.size() + " songs");
-        // End of JSoup
         driver.quit();
         return songs;
     }
 
-    private void waitForKeyElementFoundAndDisplayed(By keyElementSelector) {
-        // This method throws an Exception if the element is not found after the timeout period
-        // The selector must be very simple, ideally a unique tag that is only found once in the page,
-        // its purpose is only to detect whether the key element has been loaded,
-        // so its children containing the target information can be located and parsed by JSoup
-        Wait<WebDriver> wait;
-        wait = new WebDriverWait(driver, explicitWaitTimeout);
-        // All of Selenium's By selectors seem unable to find elements more than a level deep in the DOM,
-        // so I have decided to use JSoup combined with timed retries to find nested elements and check them,
-        // instead of Selenium's built-in selectors and waits (other than for simple initial checks).
-        // "d" is the driver passed to Wait at the time of creation, and it is passed as an argument to the lambda expression,
-        // the wait stops until the logic inside this lambda expression returns "true" (runs multiple times until "true", or until timeout occurs)
-        wait.until(d -> {
-            // In Selenium documentation, it is stated that the findElement method should not be used to look for non-present elements,
-            // and to assert presence by reading findElements list size, instead
-            List<WebElement> keyElementList = d.findElements(keyElementSelector);
-            boolean isNonZeroCount = keyElementList.size() > 0;
-            // This loop is skipped when Selenium doesn't find any elements matching the selector, so they are not present nor displayed, 
-            // otherwise, it checks whether all elements are displayed if found, and returns false if at least a match is not displayed,
-            // meaning the DOM hasn't finished loading (a very rare edge case, although maybe possible)
-            for (WebElement keyElement : keyElementList) {
-                if (!keyElement.isDisplayed()) {
-                    return false;
-                }
-            }
-            return isNonZeroCount;
-        });
-    }
-    
     // TODO: found another (unhandled) edge case: the UI of the extended releases list must be scrolled down until the bottom, 
     // this is because the initial request only loads up to 100 items (100 releases).
     List<Release> getReleases(Artist artist) {
         List<Release> releases = new ArrayList<>();
+        boolean isRetry;
+        int attempts;
         driver = new FirefoxDriver(driverOptions);
         driver.get(artist.getUrl());
         this.waitForKeyElementFoundAndDisplayed(By.tagName("ytmusic-carousel-shelf-renderer"));
-        // System.out.println("Found " + driver.findElements(By.tagName("ytmusic-carousel-shelf-renderer")).size() + " key elements after explicit Wait");
-        // JSoup
-        boolean isRetry = false;
-        int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
+        isRetry = false;
+        attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
         do {
             Document document;
             Elements listGroups;
@@ -187,7 +151,6 @@ public class DataCrawler {
             releases.addAll(singles);
             System.out.println("Total: " + releases.size() + " releases");
         } while (isRetry && attempts <= 0);
-        // End of JSoup
         driver.quit();
         return releases;
     }
@@ -234,6 +197,8 @@ public class DataCrawler {
         WebElement ironSelector;
         List<WebElement> ironSelectorFormattedStrings;
         WebElement ironSelectorArtistsButton = null;
+        boolean isRetry;
+        int attempts;
         encodedArtistName = URLEncoder.encode(artistName, "UTF-8");
         url = baseUrl.resolve("search?q=" + encodedArtistName);
         driver = new FirefoxDriver(driverOptions);
@@ -242,12 +207,10 @@ public class DataCrawler {
         this.waitForKeyElementFoundAndDisplayed(By.cssSelector("iron-selector"));
         // findElement can be used here because "wait" confirms that the iron-selector is present by checking the match count of the CSS selector
         ironSelector = driver.findElement(By.cssSelector("iron-selector"));
-        // TODO: remove "ironSelector" and similar redundat variables if necessary
         this.waitForKeyElementFoundAndDisplayed(By.cssSelector("iron-selector ytmusic-chip-cloud-chip-renderer div.gradient-box a.yt-simple-endpoint yt-formatted-string"));
         ironSelectorFormattedStrings = ironSelector.findElements(By.cssSelector("ytmusic-chip-cloud-chip-renderer div.gradient-box a.yt-simple-endpoint yt-formatted-string"));
         for (WebElement element : ironSelectorFormattedStrings) {
             if (!element.getText().equals("Artists")) {
-                // System.out.println("- Button text is: " + element.getText());
                 continue;
             }
             ironSelectorArtistsButton = element;
@@ -256,9 +219,7 @@ public class DataCrawler {
         if (ironSelectorArtistsButton == null) {
             throw new Exception("Artists filter button not found");
         }
-        // System.out.println("iron-selector yt-formatted-string(s) Artists filter button found");
         ironSelectorArtistsButton.click();
-        // System.out.println("Redirecting... ");
         // At this point I will just parse HTML with JSoup. Selenium's selector methods seem to fail with complex selectors, but not JSoup
         // To to pass the Artists button reference from the enclosing scope to the inside of the lambda expression, it must be made "final"
         final WebElement finalArtistsButton = ironSelectorArtistsButton.findElement(By.xpath("."));
@@ -274,18 +235,12 @@ public class DataCrawler {
                 // Looks up the "ytmusic-chip-cloud-chip-renderer" ancestor tag to check whether its style has changed to "STYLE_PRIMARY"
                 artistsButtonChip = finalArtistsButton.findElement(By.xpath("./../../.."));
             } catch (Exception e) {
-                // e.printStackTrace();
                 isPageUpdated = true;
             }
+            // Originally, the condition was to check for the "chip-style" attribute to be "STYLE_PRIMARY" and for the "is-selected" attribute to exist and be empty string: ""
             return shelfRenderer.size() == 1 && isPageUpdated;
-            // Previous condition, no longer necessary
-            // return artistsButtonChip.getAttribute("chip-style").equals("STYLE_PRIMARY")
-            //     && artistsButtonChip.getAttribute("is-selected").equals("")
-            //     && shelfRenderer.size() == 1
-            //     ;
         });
-        boolean isRetry;
-        int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
+        attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
         do {
             String pageSource;
             Document document;
@@ -343,7 +298,6 @@ public class DataCrawler {
                 break;
             }
         } while (isRetry && attempts > 0);
-        // TODO: maybe the driver should be handled externally, or enclose all of this in a try-catch-finally block (and close the driver in finally)
         driver.quit();
         return result;
     }
@@ -356,14 +310,13 @@ public class DataCrawler {
         // This gets the fifth ancestor, starting from the closest one (the direct parent)
         ancestorShelf = listGroupTitle.parents().get(4);
         // The nested page lookup can not be ignored, this behavior seems consistent on the YouTube Music web app:
-        // This "if" runs when the shelf does not contain the full list, and its contents should be retrieved from the extended list page,
+        // This "if" runs when the shelf does not contain the full list, and its full contents should be retrieved from the extended list page,
         // short lists from shelfs in the Artist page can contain at most 10 items, otherwise, the "More" button is displayed in the shelf
         if (listGroupTitle.tagName().equals("a")) {
-            // The next -commented- line of code was just a patch to collect the items from the short list,
-            // the proper way to handle this edge case is to look up the page behind the "More" button and scrape it
-            // ancestorShelf = listGroupTitle.parents().get(5);
-            Wait<WebDriver> wait;
             URI allReleasesPage;
+            boolean isRetry;
+            int attempts;
+            Elements nestedReleaseListItems;
             allReleasesPage = baseUrl.resolve(listGroupTitle.attr("href"));
             // No need to create a new Driver window on each nested lookup because the Document from the Artist page is cached by the caller,
             // and all information from other shelves can be accessed even if the driver URL changes (the caller is "getReleases")
@@ -371,10 +324,8 @@ public class DataCrawler {
             // There may be a very rare edge case where the full list has only one kind of releases: albums or singles (in quantities greater than 10), however,
             // I haven't found a single test case that fits these characteristics, and even if there is any, it is possible that this block will work just fine
             this.waitForKeyElementFoundAndDisplayed(By.tagName("ytmusic-grid-renderer"));
-            // TODO: cleanup, push variables to the top
-            boolean isRetry = false;
-            int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
-            Elements nestedReleaseListItems;
+            isRetry = false;
+            attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
             do {
                 Document document = Jsoup.parse(driver.getPageSource());
                 nestedReleaseListItems = document.select("ytmusic-grid-renderer div#items ytmusic-two-row-item-renderer");
@@ -418,7 +369,7 @@ public class DataCrawler {
                     releaseType.text().equals("Single") && !releaseClass.equals(Single.class)
                     || !(releaseType.text().equals("Single")) && releaseClass.equals(Single.class)
                     ) {
-                    System.out.println("Found a release, but method did not request finding instances of this type. Will ignore");
+                    // System.out.println("Found a release, but method did not request finding instances of this type. Will ignore");
                     continue;
                 }
             }
@@ -445,6 +396,35 @@ public class DataCrawler {
             System.out.println("Found a release: " + release.getName() + ", at relative URL: " + release.getUrl());
         }
         return releases;
+    }
+
+    private void waitForKeyElementFoundAndDisplayed(By keyElementSelector) {
+        // This method throws an Exception if the element is not found after the timeout period
+        // The selector must be very simple, ideally a unique tag that is only found once in the page,
+        // its purpose is only to detect whether the key element has been loaded,
+        // so its children containing the target information can be located and parsed by JSoup
+        Wait<WebDriver> wait;
+        wait = new WebDriverWait(driver, explicitWaitTimeout);
+        // All of Selenium's By selectors seem unable to find elements when certain conditions are met,
+        // so I have decided to use JSoup combined with timed retries to find nested elements and check them,
+        // instead of Selenium's built-in selectors and waits (other than for simple initial checks).
+        // "d" is the driver passed to Wait at the time of creation, and it is passed as an argument to the lambda expression,
+        // the wait stops until the logic inside this lambda expression returns "true" (runs multiple times until "true", or until timeout occurs)
+        wait.until(d -> {
+            // In Selenium documentation, it is stated that the findElement method should not be used to look for non-present elements,
+            // and to assert presence by reading findElements list size, instead
+            List<WebElement> keyElementList = d.findElements(keyElementSelector);
+            boolean isNonZeroCount = keyElementList.size() > 0;
+            // This loop is skipped when Selenium doesn't find any elements matching the selector, so they are not present nor displayed, 
+            // otherwise, it checks whether all elements are displayed if found, and returns false if at least a match is not displayed,
+            // meaning the DOM hasn't finished loading (a very rare edge case, although maybe possible)
+            for (WebElement keyElement : keyElementList) {
+                if (!keyElement.isDisplayed()) {
+                    return false;
+                }
+            }
+            return isNonZeroCount;
+        });
     }
 
 }
