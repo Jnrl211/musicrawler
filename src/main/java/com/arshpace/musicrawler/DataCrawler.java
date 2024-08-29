@@ -7,7 +7,6 @@ import java.net.URLEncoder;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -29,9 +28,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * </p>
  * 
  * <ul>
-*  <li>Artist</li>
-*  <li>Releases</li>
-*  <li>Songs</li>
+ *  <li>Artist</li>
+ *  <li>Releases</li>
+ *  <li>Songs</li>
  * </ul>
  * 
  * <p>
@@ -74,7 +73,7 @@ public class DataCrawler {
             isRetry = false;
             document = Jsoup.parse(driver.getPageSource());
             listItems = document.select("ytmusic-responsive-list-item-renderer");
-            System.out.println("List items found by JSoup: " + listItems.size());
+            // System.out.println("List items found by JSoup: " + listItems.size());
             for (int i = 0; i < listItems.size(); i++) {
                 Element listItemWrapper = listItems.get(i);
                 Element listItem = listItemWrapper.selectFirst("div.flex-columns div.title-column yt-formatted-string.title a.yt-simple-endpoint");
@@ -83,7 +82,7 @@ public class DataCrawler {
                     System.out.println("Failed to find item from list item wrapper");
                     continue;
                 }
-                System.out.println("Found an item: " + listItem.text() + ", at relative URL: " + listItem.attr("href"));
+                // System.out.println("Found an item: " + listItem.text() + ", at relative URL: " + listItem.attr("href"));
                 // Song data can be collected easily here, no more processing required
                 song = new Song();
                 song.setAuthor(release.getAuthor());
@@ -98,7 +97,7 @@ public class DataCrawler {
                 continue;
             }
         } while (isRetry && attempts <= 0);
-        System.out.println("Total: " + songs.size() + " songs");
+        // System.out.println("Total: " + songs.size() + " songs");
         driver.quit();
         return songs;
     }
@@ -149,13 +148,13 @@ public class DataCrawler {
             }
             releases.addAll(albums);
             releases.addAll(singles);
-            System.out.println("Total: " + releases.size() + " releases");
+            // System.out.println("Total: " + releases.size() + " releases");
         } while (isRetry && attempts <= 0);
         driver.quit();
         return releases;
     }
 
-    Artist getArtist(String artistName) throws Exception {
+    List<Artist> getArtistSearchResults(String artistName) throws Exception {
 
         // This local class is meant to consolidate artist search result data in a single instance to iterate over them more easily
         class ArtistSearchResult {
@@ -163,13 +162,137 @@ public class DataCrawler {
             private String name;
             private String url;
 
-            ArtistSearchResult() {
+            public String getName() {
+                return name;
             }
 
-            ArtistSearchResult(String name, String url) {
-                this.setName(name);
-                this.setUrl(url);
+            public void setName(String name) {
+                this.name = name;
             }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+            
+        }
+
+        // Avoid mixing implicit and explicit waiting strategies, using only implicit strategies doesn't work, so I will build this method with explicit waits only
+        List<Artist> matches = new ArrayList<>();
+        String encodedArtistName;
+        URI url;
+        Wait<WebDriver> wait;
+        WebElement ironSelector;
+        List<WebElement> ironSelectorFormattedStrings;
+        WebElement ironSelectorArtistsButton = null;
+        boolean isRetry;
+        int attempts;
+        encodedArtistName = URLEncoder.encode(artistName, "UTF-8");
+        url = baseUrl.resolve("search?q=" + encodedArtistName);
+        driver = new FirefoxDriver(driverOptions);
+        driver.get(url.toString());
+        wait = new WebDriverWait(driver, explicitWaitTimeout);
+        this.waitForKeyElementFoundAndDisplayed(By.cssSelector("iron-selector"));
+        // findElement can be used here because "wait" confirms that the iron-selector is present by checking the match count of the CSS selector
+        ironSelector = driver.findElement(By.cssSelector("iron-selector"));
+        this.waitForKeyElementFoundAndDisplayed(By.cssSelector("iron-selector ytmusic-chip-cloud-chip-renderer div.gradient-box a.yt-simple-endpoint yt-formatted-string"));
+        ironSelectorFormattedStrings = ironSelector.findElements(By.cssSelector("ytmusic-chip-cloud-chip-renderer div.gradient-box a.yt-simple-endpoint yt-formatted-string"));
+        for (WebElement element : ironSelectorFormattedStrings) {
+            if (!element.getText().equals("Artists")) {
+                continue;
+            }
+            ironSelectorArtistsButton = element;
+            break;
+        }
+        if (ironSelectorArtistsButton == null) {
+            throw new Exception("Artists filter button not found");
+        }
+        ironSelectorArtistsButton.click();
+        // At this point I will just parse HTML with JSoup. Selenium's selector methods seem to fail with complex selectors, but not JSoup
+        // To to pass the Artists button reference from the enclosing scope to the inside of the lambda expression, it must be made "final"
+        final WebElement finalArtistsButton = ironSelectorArtistsButton.findElement(By.xpath("."));
+        wait.until(d -> {
+            List<WebElement> shelfRenderer;
+            WebElement artistsButtonChip;
+            boolean isPageUpdated = false;
+            // Checks whether there is only one shelf for Artists: more or less means there are none, or the page hasn't finished loading
+            shelfRenderer = d.findElements(By.tagName("ytmusic-shelf-renderer"));
+            // If the artistsButtonChip assignment throws a StaleElementReferenceException, it means the page has been updated,
+            // and the original Artists button is not part of the active DOM: no need to check for specific attributes
+            try {
+                // Looks up the "ytmusic-chip-cloud-chip-renderer" ancestor tag to check whether its style has changed to "STYLE_PRIMARY"
+                artistsButtonChip = finalArtistsButton.findElement(By.xpath("./../../.."));
+            } catch (Exception e) {
+                isPageUpdated = true;
+            }
+            // Originally, the condition was to check for the "chip-style" attribute to be "STYLE_PRIMARY" and for the "is-selected" attribute to exist and be empty string: ""
+            return shelfRenderer.size() == 1 && isPageUpdated;
+        });
+        attempts = JSoupRetryManager.getjSoupParseRetryAttempts();
+        do {
+            String pageSource;
+            Document document;
+            Element searchResultsAncestor;
+            Elements searchResults;
+            List<ArtistSearchResult> artistSearchResults;
+            isRetry = false;
+            pageSource = driver.getPageSource();
+            document = Jsoup.parse(pageSource);
+            searchResultsAncestor = document.selectFirst("ytmusic-tabbed-search-results-renderer");
+            if (searchResultsAncestor == null) {
+                isRetry = true;
+                attempts--;
+                continue;
+            }
+            searchResults = searchResultsAncestor.select("ytmusic-section-list-renderer.style-scope div#contents ytmusic-shelf-renderer div#contents ytmusic-responsive-list-item-renderer");
+            // System.out.println(searchResults.size() + " artist name search results");
+            artistSearchResults = new ArrayList<>();
+            for (int i = 0; i < searchResults.size(); i++) {
+                Element element;
+                Element artistNameElement;
+                Element artistChannelElement;
+                ArtistSearchResult artistSearchResult;
+                element = searchResults.get(i);
+                artistNameElement = element.selectFirst("div.flex-columns div.title-column yt-formatted-string.title");
+                if (artistNameElement == null) {
+                    // List item will be left as "null" (because list has been initialized to the artist count size)
+                    System.out.println("Item " + i + " is null");
+                    continue;
+                }
+                // System.out.println("Item " + i + " contains artist name: " + artistNameElement.text());
+                artistChannelElement = element.selectFirst("a.yt-simple-endpoint");
+                if (artistChannelElement == null) {
+                    System.out.println("Item " + i + " channel URL not found (this entry will be ommited)");
+                    continue;
+                }
+                artistSearchResult = new ArtistSearchResult();
+                artistSearchResult.setName(artistNameElement.text());
+                artistSearchResult.setUrl(baseUrl.resolve(artistChannelElement.attr("href")).toString());
+                artistSearchResults.add(i, artistSearchResult);
+            }
+            // Unlike the original "getArtist" method, this one collects all of the Artist channels so the user can select the correct channel from the search results,
+            // because there may be two or more artist channels sharing the same name, even though the best result typically shows up first in the list.
+            for (int i = 0; i < artistSearchResults.size(); i++) {
+                ArtistSearchResult artistSearchResult = artistSearchResults.get(i);
+                Artist artist = new Artist(artistSearchResult.getName(), artistSearchResult.getUrl());
+                matches.add(i, artist);
+            }
+        } while (isRetry && attempts > 0);
+        driver.quit();
+        return matches;
+    }
+
+    @Deprecated
+    Artist getArtist(String artistName) throws Exception {
+
+        // This local class is meant to consolidate artist search result data in a single instance to iterate over them more easily
+        class ArtistSearchResult {
+
+            private String name;
+            private String url;
 
             public String getName() {
                 return name;
@@ -257,7 +380,7 @@ public class DataCrawler {
                 continue;
             }
             searchResults = searchResultsAncestor.select("ytmusic-section-list-renderer.style-scope div#contents ytmusic-shelf-renderer div#contents ytmusic-responsive-list-item-renderer");
-            System.out.println(searchResults.size() + " artist name search results");
+            // System.out.println(searchResults.size() + " artist name search results");
             artistSearchResults = new ArrayList<>();
             for (int i = 0; i < searchResults.size(); i++) {
                 Element element;
@@ -271,7 +394,7 @@ public class DataCrawler {
                     System.out.println("Item " + i + " is null");
                     continue;
                 }
-                System.out.println("Item " + i + " contains artist name: " + artistNameElement.text());
+                // System.out.println("Item " + i + " contains artist name: " + artistNameElement.text());
                 artistChannelElement = element.selectFirst("a.yt-simple-endpoint");
                 if (artistChannelElement == null) {
                     System.out.println("Item " + i + " channel URL not found (this entry will be ommited)");
@@ -282,7 +405,7 @@ public class DataCrawler {
                 artistSearchResult.setUrl(baseUrl.resolve(artistChannelElement.attr("href")).toString());
                 artistSearchResults.add(i, artistSearchResult);
             }
-            // TODO: At this point, all possible channels have been collected: the best result typically shows up first in the list,
+            // At this point, all possible channels have been collected: the best result typically shows up first in the list,
             // but just in case, there should be a way to let the user select which channel points to the correct artist,
             // because there may be artist channels sharing the same name (this is not implemented yet)
             // This picks the first channel that matches the artist name, regardless of whether there are more channels with that name
@@ -393,7 +516,7 @@ public class DataCrawler {
             release.setUrl(baseUrl.resolve(releaseTitle.attr("href")).toString());
             // Tracklists have to be scraped too, but this method will only collect Releases, not their tracklists
             releases.add(release);
-            System.out.println("Found a release: " + release.getName() + ", at relative URL: " + release.getUrl());
+            // System.out.println("Found a release: " + release.getName() + ", at relative URL: " + release.getUrl());
         }
         return releases;
     }
