@@ -68,7 +68,7 @@ public class DataCrawler {
         List<Song> songs = new ArrayList<>();
         driver = new FirefoxDriver(driverOptions);
         driver.get(release.getUrl());
-        this.waitForKeyElementFoundAndDisplayed(driver, By.tagName("ytmusic-shelf-renderer"));
+        this.waitForKeyElementFoundAndDisplayed(By.tagName("ytmusic-shelf-renderer"));
         // System.out.println("Found " + driver.findElements(By.tagName("ytmusic-shelf-renderer")).size() + " key elements after explicit Wait");
         // JSoup
         boolean isRetry = false;
@@ -110,7 +110,7 @@ public class DataCrawler {
         return songs;
     }
 
-    private void waitForKeyElementFoundAndDisplayed(WebDriver driver, By keyElementSelector) {
+    private void waitForKeyElementFoundAndDisplayed(By keyElementSelector) {
         // This method throws an Exception if the element is not found after the timeout period
         // The selector must be very simple, ideally a unique tag that is only found once in the page,
         // its purpose is only to detect whether the key element has been loaded,
@@ -120,8 +120,11 @@ public class DataCrawler {
         // All of Selenium's By selectors seem unable to find elements more than a level deep in the DOM,
         // so I have decided to use JSoup combined with timed retries to find nested elements and check them,
         // instead of Selenium's built-in selectors and waits (other than for simple initial checks).
-        // "d" is the driver passed to Wait at the time of creation, and it is passed as an argument to the lambda expression
+        // "d" is the driver passed to Wait at the time of creation, and it is passed as an argument to the lambda expression,
+        // the wait stops until the logic inside this lambda expression returns "true" (runs multiple times until "true", or until timeout occurs)
         wait.until(d -> {
+            // In Selenium documentation, it is stated that the findElement method should not be used to look for non-present elements,
+            // and to assert presence by reading findElements list size, instead
             List<WebElement> keyElementList = d.findElements(keyElementSelector);
             boolean isNonZeroCount = keyElementList.size() > 0;
             // This loop is skipped when Selenium doesn't find any elements matching the selector, so they are not present nor displayed, 
@@ -142,7 +145,7 @@ public class DataCrawler {
         List<Release> releases = new ArrayList<>();
         driver = new FirefoxDriver(driverOptions);
         driver.get(artist.getUrl());
-        this.waitForKeyElementFoundAndDisplayed(driver, By.tagName("ytmusic-carousel-shelf-renderer"));
+        this.waitForKeyElementFoundAndDisplayed(By.tagName("ytmusic-carousel-shelf-renderer"));
         // System.out.println("Found " + driver.findElements(By.tagName("ytmusic-carousel-shelf-renderer")).size() + " key elements after explicit Wait");
         // JSoup
         boolean isRetry = false;
@@ -236,20 +239,11 @@ public class DataCrawler {
         driver = new FirefoxDriver(driverOptions);
         driver.get(url.toString());
         wait = new WebDriverWait(driver, explicitWaitTimeout);
-        wait.until(d -> {
-            // "d" is the web driver of the wait object passed as an argument to the lambda expression
-            // The wait stops until the logic inside this lambda expression returns "true" (runs multiple times until "true", or until timeout occurs)
-            // Note: in the documentation, it is said that the findElement method should not be used to look for non-present elements,
-            // and to assert presence by reading findElements list size, instead
-            List<WebElement> ironSelectorTest = driver.findElements(By.cssSelector("iron-selector"));
-            return ironSelectorTest.size() > 0;
-        });
+        this.waitForKeyElementFoundAndDisplayed(By.cssSelector("iron-selector"));
         // findElement can be used here because "wait" confirms that the iron-selector is present by checking the match count of the CSS selector
         ironSelector = driver.findElement(By.cssSelector("iron-selector"));
-        wait.until(d -> {
-            List<WebElement> ironSelectorFormattedStringsTest = ironSelector.findElements(By.cssSelector("ytmusic-chip-cloud-chip-renderer div.gradient-box a.yt-simple-endpoint yt-formatted-string"));
-            return ironSelectorFormattedStringsTest.size() > 0;
-        });
+        // TODO: remove "ironSelector" and similar redundat variables if necessary
+        this.waitForKeyElementFoundAndDisplayed(By.cssSelector("iron-selector ytmusic-chip-cloud-chip-renderer div.gradient-box a.yt-simple-endpoint yt-formatted-string"));
         ironSelectorFormattedStrings = ironSelector.findElements(By.cssSelector("ytmusic-chip-cloud-chip-renderer div.gradient-box a.yt-simple-endpoint yt-formatted-string"));
         for (WebElement element : ironSelectorFormattedStrings) {
             if (!element.getText().equals("Artists")) {
@@ -374,14 +368,9 @@ public class DataCrawler {
             // No need to create a new Driver window on each nested lookup because the Document from the Artist page is cached by the caller,
             // and all information from other shelves can be accessed even if the driver URL changes (the caller is "getReleases")
             driver.get(allReleasesPage.toString());
-            wait = new WebDriverWait(driver, explicitWaitTimeout);
-            wait.until(d -> {
-                // There may be a very rare edge case where the full list has only one kind of releases: albums or singles (in quantities greater than 10),
-                // however, I haven't found a single test case that would fit these characteristics, and even if there is any, 
-                // it is also possible that this block will work just fine
-                List<WebElement> grid = d.findElements(By.tagName("ytmusic-grid-renderer"));
-                return grid.size() > 0;
-            });
+            // There may be a very rare edge case where the full list has only one kind of releases: albums or singles (in quantities greater than 10), however,
+            // I haven't found a single test case that fits these characteristics, and even if there is any, it is possible that this block will work just fine
+            this.waitForKeyElementFoundAndDisplayed(By.tagName("ytmusic-grid-renderer"));
             // TODO: cleanup, push variables to the top
             boolean isRetry = false;
             int attempts = JSoupRetryManager.getjSoupParseRetryAttempts();

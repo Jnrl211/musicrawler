@@ -66,7 +66,7 @@ public class AppTest
         List<Release> releases;
         List<Song> firstAlbumSongs;
         // Added more artists here to simulate multiple test cases
-        // artistName = "Nirvana";
+        artistName = "Nirvana";
         // artistName = "Luis Miguel";
         artist = dataCrawler.getArtist(artistName);
         System.out.println("Artist name: " + artist.getName() + ", channel URL: " + artist.getUrl());
