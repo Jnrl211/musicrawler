@@ -4,13 +4,13 @@ MusiCrawler is a Java library that acts as a web scraper to collect music and di
 Note that this project is a work in process, and may be subject to change.
 
 ## Building
-This is a Java project that uses Maven for dependency management, so you need to install it in order to build this project. 
+This is a Java project that uses Maven for dependency management, so you need to install it as well as a JDK 17 in order to build this project. 
 
-Once you have set up your environment, run the Maven "compile" goal to produce a JAR file that you can use as a dependency in your own projects.
+Once you have set up your environment, run the Maven "package" goal to produce a JAR file that you can use as a dependency in your own projects.
 
 For example, on Windows, travel to the root directory of the project and call Maven like the next line of code, or use IDE extensions to run Maven goals. Make sure Maven is accessible from the project directory.
 ```
-mvn compile -f ./pom.xml
+mvn package -f ./pom.xml
 ```
 
 ## Running
